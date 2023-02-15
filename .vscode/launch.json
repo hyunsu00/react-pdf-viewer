@@ -9,7 +9,10 @@
 			"request": "launch",
 			"name": "chrome debugger",
 			"url": "http://localhost:3000",
-			"webRoot": "${workspaceFolder}/src"
+			"webRoot": "${workspaceFolder}/src",
+			"sourceMapPathOverrides": {
+				"webpack:///src/*": "${webRoot}/*"
+			}
 		}
 	]
 }

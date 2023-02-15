@@ -1,11 +1,23 @@
+import React, { useEffect, useState } from'react';
 import "./App.css";
 
 function App() {
+  const [htmlStr, setHtmlStr] = useState();
+
+  async function fetchHtml() {
+    setHtmlStr(await (await fetch(`./pdfjs_template.html`)).text());
+  }
+  useEffect(() => {
+    fetchHtml();
+  }, []);
+
   return (
-    <div className="App">
-      <div id="viewer" className="pdfViewer"></div>
+    <div className="App" style={{height:'100%'}} >
+      <div id="pdfjs_wrap" style={{height:'100%'}}  dangerouslySetInnerHTML={{ __html: htmlStr }}></div>
     </div>
   );
 }
 
 export default App;
+
+
