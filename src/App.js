@@ -5,7 +5,8 @@ function App() {
   const [htmlStr, setHtmlStr] = useState();
 
   async function fetchHtml() {
-    setHtmlStr(await (await fetch(`./external/pdfjs_template.html`)).text());
+    const htmlStr = await (await fetch(`${process.env.PUBLIC_URL}/external/pdfjs_template.html`)).text();
+    setHtmlStr(htmlStr);
   }
   useEffect(() => {
     fetchHtml();
