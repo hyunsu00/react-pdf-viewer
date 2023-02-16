@@ -1,4 +1,4 @@
-window.onload = () => {
+// window.onload = () => {
   console.log(`[window.onload()][Begin]`);
 
   const import_pdfjs = (publicPath) => {
@@ -24,4 +24,4 @@ window.onload = () => {
   import_pdfjs(publicPath);
 
   console.log(`[window.onload()][End]`);
-};
+// };

@@ -7,11 +7,11 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    {console.log(`root.render[Function] : Begin`)}
+    {/* {console.log(`root.render[Function] : Begin`)} */}
     <React.StrictMode>
       <App />
     </React.StrictMode>
-    {console.log(`root.render[Function] : End`)}
+    {/* {console.log(`root.render[Function] : End`)} */}
   </>
 );
 
