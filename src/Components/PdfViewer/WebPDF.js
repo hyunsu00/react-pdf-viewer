@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-var htmlFile = require("./temp.html");
 
 function WebPDF() {
   const [htmlStr, setHtmlStr] = useState();
@@ -14,13 +13,13 @@ function WebPDF() {
 
   // componentDidMount with useEffect
   useEffect(() => {
-    console.log("componentDidMount[Function]");
+    console.log("WebPDF.componentDidMount[Function]");
 
     fetchHtml();
 
     // componentWillUnmount with useEffect
     return () => {
-      console.log("componentWillUnmount[Function]");
+      console.log("WebPDF.componentWillUnmount[Function]");
     };
   }, []);
 
@@ -30,7 +29,7 @@ function WebPDF() {
     if (!mounted.current) {
       mounted.current = true;
     } else {
-      console.log("componentDidUpdate[Function]");
+      console.log("WebPDF.componentDidUpdate[Function]");
     }
   });
 

@@ -1,37 +1,35 @@
-import React, { useEffect, useState } from "react";
 import "./App.css";
 import WebPDF from "./Components/PdfViewer/WebPDF";
+import React, { useEffect, useRef } from "react";
 
 function App() {
+  // componentDidMount with useEffect
+  useEffect(() => {
+    console.log("App.componentDidMount[Function]");
+    // componentWillUnmount with useEffect
+    return () => {
+      console.log("App.componentWillUnmount[Function]");
+    };
+  }, []);
+  // componentDidUpdate with useEffect
+  const mounted = useRef(false);
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      console.log("App.componentDidUpdate[Function]");
+    }
+  });
+
   return (
-    <div className="App" style={{ height: "100%" }}>
-      <WebPDF />
-    </div>
+    <>
+      {console.log(`App.render[Function] : Begin`)}
+      <div className="App" style={{ height: "100%" }}>
+        <WebPDF />
+      </div>
+      {console.log(`App.render[Function] : End`)}
+    </>
   );
 }
-
-// function App() {
-//   const [htmlStr, setHtmlStr] = useState();
-
-//   async function fetchHtml() {
-//     const htmlStr = await (
-//       await fetch(`${process.env.PUBLIC_URL}/external/pdfjs_template.html`)
-//     ).text();
-//     setHtmlStr(htmlStr);
-//   }
-//   useEffect(() => {
-//     fetchHtml();
-//   }, []);
-
-//   return (
-//     <div className="App" style={{ height: "100%" }}>
-//       <div
-//         id="pdfjs_wrap"
-//         style={{ height: "100%" }}
-//         dangerouslySetInnerHTML={{ __html: htmlStr }}
-//       ></div>
-//     </div>
-//   );
-// }
 
 export default App;
