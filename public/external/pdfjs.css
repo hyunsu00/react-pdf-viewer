@@ -1,9 +1,0 @@
-@import url("./pdfjs/web/viewer.css"); /* 상대경로 */
-
-.toolbar {
-  display: none !important;
-}
-
-#viewerContainer {
-  top: 0;
-}

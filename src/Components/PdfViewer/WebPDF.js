@@ -1,36 +1,20 @@
 import React, { useEffect, useRef } from "react";
+import "./pdfjs/pdfjs.css"
+import import_pdfjs from './pdfjs/pdfjs';
+import html from "./pdfjs/pdfjs.html";
 
-function WebPDF({ htmlTemplate }) {
-  const appendScript = (scriptToAppend) => {
-    const script = document.createElement("script");
-    script.src = scriptToAppend;
-    script.async = true;
-    document.body.appendChild(script);
-  };
-  const removeScript = (scriptToremove) => {
-    let allsuspects = document.getElementsByTagName("script");
-    for (let i = allsuspects.length; i >= 0; i--) {
-      if (
-        allsuspects[i] &&
-        allsuspects[i].getAttribute("src") !== null &&
-        allsuspects[i].getAttribute("src").indexOf(`${scriptToremove}`) !== -1
-      ) {
-        allsuspects[i].parentNode.removeChild(allsuspects[i]);
-      }
-    }
-  };
-
-  console.log("function WebPDF({htmlTemplate})");
+function WebPDF() {
+  console.log("function WebPDF())");
 
   // componentDidMount with useEffect
   useEffect(() => {
     console.log("WebPDF.componentDidMount[Function]");
-    appendScript(`${process.env.PUBLIC_URL}/external/pdfjs.js`);
 
+    import_pdfjs();
+    
     // componentWillUnmount with useEffect
     return () => {
       console.log("WebPDF.componentWillUnmount[Function]");
-      removeScript(`${process.env.PUBLIC_URL}/external/pdfjs.js`);
     };
   }, []);
 
@@ -45,11 +29,7 @@ function WebPDF({ htmlTemplate }) {
   });
 
   return (
-    <div
-      id="pdfjs_wrap"
-      style={{ height: "100%" }}
-      dangerouslySetInnerHTML={{ __html: htmlTemplate }}
-    ></div>
+    <div id="pdfjs_wrap" dangerouslySetInnerHTML={{ __html: html }}></div>
   );
 }
 
